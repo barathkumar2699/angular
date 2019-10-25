@@ -17,13 +17,22 @@
       </mat-form-field>
       <mat-form-field>
         <input matInput placeholder="Password" type="password" [(ngModel)]="user.password" name="password"
-        #password="ngModel" required>
+        #password="ngModel" [type]="hide ? 'password' : 'text'" required>
+        
         <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
       </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Enter your email" [formControl]="email" required>
+        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+      
       <mat-checkbox [(ngModel)]="user.remember" name="remember">Remember Me</mat-checkbox>
       
     </p>
   </mat-dialog-content>
+
   <mat-dialog-actions>
     <span class="flex-spacer"></span>
     <button mat-button mat-dialog-close>Cancel</button>
