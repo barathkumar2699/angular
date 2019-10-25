@@ -1,5 +1,15 @@
-<app-header></app-header>
+<div 
+  gdAreas="header header |content content | footer footer"
+  gdGap="1px"
+  gdRows="auto auto auto">
+  <div gdArea="header">
+    <app-header></app-header>
+   </div>
 
-<router-outlet></router-outlet>
-
-<app-footer></app-footer>
+  <div gdArea="content">
+    <router-outlet></router-outlet>
+  </div>
+  <div gdArea="footer">
+    <app-footer></app-footer>
+  </div>
+</div>
