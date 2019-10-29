@@ -35,6 +35,9 @@ import {LeaderService} from './services/leader.service';
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
+import { HeadcopyComponent } from './headcopy/headcopy.component';
+import {  MatSidenavModule, MatIconModule } from "@angular/material";
+
 
 
 
@@ -50,7 +53,8 @@ import { LoginComponent } from './login/login.component';
     HomeComponent,
     AboutComponent,
     ContactComponent,
-    LoginComponent
+    LoginComponent,
+    HeadcopyComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +74,9 @@ import { LoginComponent } from './login/login.component';
     MatSelectModule,
     MatSlideToggleModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatIconModule,
+    MatSidenavModule
   ],
   providers: [DishService,
   PromotionService,
