@@ -5,10 +5,16 @@ import { Dish } from '../shared/dish';
 // import { DISHES } from '../shared/dishes';
 import {DishService} from '../services/dish.service'
 
+import { flyInOut, expand } from '../animations/app.animation';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss']
+  styleUrls: ['./menu.component.scss'],
+  animations: [
+    flyInOut(),
+    expand()
+  ]
 })
 
 export class MenuComponent implements OnInit {
