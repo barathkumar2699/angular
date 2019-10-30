@@ -43,6 +43,7 @@ import { HeadcopyComponent } from './headcopy/headcopy.component';
 import {  MatSidenavModule, MatIconModule } from "@angular/material";
 
 import { baseURL } from './shared/baseurl';
+import { HighlightDirective } from './directives/highlight.directive';
 
 
 
@@ -62,7 +63,8 @@ import { baseURL } from './shared/baseurl';
     AboutComponent,
     ContactComponent,
     LoginComponent,
-    HeadcopyComponent
+    HeadcopyComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
