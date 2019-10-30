@@ -70,8 +70,12 @@ fxLayoutGap="10px">
         </p>
       </mat-list-item>
     </mat-list>
-    <div [hidden]="leaders">
+    <div [hidden]="leaders || errmes">
         <mat-spinner></mat-spinner><h4>Loading . . . Please Wait</h4>
       </div>
+    <div fxFlex *ngIf="errmes">
+      <h2>Error</h2>
+      <h3>{{errmes}}</h3>
+    </div>
   </div>
 </div>
