@@ -39,7 +39,6 @@ import { ProcessHTTPMsgService } from './services/process-httpmsg.service'
 
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { LoginComponent } from './login/login.component';
-import { HeadcopyComponent } from './headcopy/headcopy.component';
 import {  MatSidenavModule, MatIconModule } from "@angular/material";
 
 import { baseURL } from './shared/baseurl';
@@ -63,7 +62,6 @@ import { HighlightDirective } from './directives/highlight.directive';
     AboutComponent,
     ContactComponent,
     LoginComponent,
-    HeadcopyComponent,
     HighlightDirective
   ],
   imports: [
