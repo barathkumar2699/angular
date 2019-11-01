@@ -57,6 +57,8 @@
       </mat-list>
       
 
+      <p>{{ commentForm.value | json }} {{ commentForm.status | json }}</p>
+
       <form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()">
         <p>
         <mat-form-field class="full-width">
