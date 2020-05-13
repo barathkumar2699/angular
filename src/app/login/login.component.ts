@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog, MatDialogRef} from '@angular/material';
-import {FormControl, Validators} from '@angular/forms';
-
+import {MatDialogRef} from '@angular/material';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,26 +9,28 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  hide=true;
+  user = {username: '', password: '', remember: false};
+  errMess: string;
 
-  user={username:"",password:"",remember:false}
-  constructor(public dialogRef:MatDialogRef<LoginComponent>) { }
+  constructor(public dialogRef: MatDialogRef<LoginComponent>,
+    private authService: AuthService) { }
 
   ngOnInit() {
   }
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-
-  getErrorMessage() {
-    return this.email.hasError('required') ? 'You must enter a value' :
-        this.email.hasError('email') ? 'Not a valid email' :
-            '';
+  onSubmit() {
+    console.log('User: ', this.user);
+    this.authService.logIn(this.user)
+      .subscribe(res => {
+        if (res.success) {
+          this.dialogRef.close(res.success);
+        } else {
+          console.log(res);
+        }
+      },
+      error => {
+        console.log(error);
+        this.errMess = error;
+      });
   }
-
-  onSubmit()
-  {
-    console.log(this.user);
-    this.dialogRef.close();
-  }
-
 }

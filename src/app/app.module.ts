@@ -31,6 +31,10 @@ import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component'
 import { MenuComponent } from './menu/menu.component';
 import { DishdetailComponent } from './dishdetail/dishdetail.component';
+import { AuthService } from './services/auth.service';
+import { AuthInterceptor, UnauthorizedInterceptor } from './services/auth.interceptor';
+import { FavoriteService } from './services/favorite.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 import {DishService} from './services/dish.service';
 import {PromotionService} from './services/promotion.service';
@@ -44,6 +48,9 @@ import {  MatSidenavModule, MatIconModule } from "@angular/material";
 
 import { baseURL } from './shared/baseurl';
 import { HighlightDirective } from './directives/highlight.directive';
+import { FavoritesComponent } from './favorites/favorites.component';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import { FeedbackService } from './services/feedback.service';
 
 
 
@@ -64,7 +71,8 @@ import { HighlightDirective } from './directives/highlight.directive';
     ContactComponent,
     LoginComponent,
     HeadcopyComponent,
-    HighlightDirective
+    HighlightDirective,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,
@@ -95,7 +103,21 @@ import { HighlightDirective } from './directives/highlight.directive';
   PromotionService,
   LeaderService,
   ProcessHTTPMsgService,
-  {provide: 'BaseURL', useValue: baseURL}
+  FeedbackService,
+  AuthService,
+  AuthGuardService,
+  FavoriteService,
+  {provide: 'BaseURL', useValue: baseURL},
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: UnauthorizedInterceptor,
+    multi: true
+  }
   ],
   entryComponents: [
     LoginComponent
