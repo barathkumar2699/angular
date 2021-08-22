@@ -1,0 +1,45 @@
+<mat-toolbar color="primary">
+  Signup
+<span class="flex-spacer"></span>
+<button mat-button mat-dialog-close>&times;</button>
+</mat-toolbar>
+
+<div *ngIf="errMess">
+<h2>Error</h2>
+<h4>{{errMess}}</h4>
+</div>
+
+<form novalidate #signupform="ngForm" (ngSubmit)="onSubmit()">
+
+<mat-dialog-content>
+  <p>
+    <mat-form-field>
+      <input matInput placeholder="FirstName" type="text" [(ngModel)]="user.firstname" name="firstname"  #firstname="ngModel" required>
+      <mat-error *ngIf="firstname.errors?.required">FirstName is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="LastName" type="text" [(ngModel)]="user.lastname" name="lastname"  #lastname="ngModel" required>
+      <mat-error *ngIf="lastname.errors?.required">Lastname is required</mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field>
+      <input matInput placeholder="Username" type="text" [(ngModel)]="user.username" name="username"  #username="ngModel" required>
+      <mat-error *ngIf="username.errors?.required">Username is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Password" type="password" [(ngModel)]="user.password" name="password" #password="ngModel" required>
+      <mat-error *ngIf="password.errors?.required">Password is required</mat-error>
+    </mat-form-field>
+  </p>
+  <p>
+  <mat-checkbox [(ngModel)]="user.admin" name="admin">admin</mat-checkbox>
+  </p>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <span class="flex-spacer"></span>
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="signupform.form.invalid">Signup</button>
+</mat-dialog-actions>
+</form>

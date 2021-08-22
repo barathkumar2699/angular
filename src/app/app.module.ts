@@ -51,6 +51,7 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { FavoritesComponent } from './favorites/favorites.component';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FeedbackService } from './services/feedback.service';
+import { SignupComponent } from './signup/signup.component';
 
 
 
@@ -72,7 +73,8 @@ import { FeedbackService } from './services/feedback.service';
     LoginComponent,
     HeadcopyComponent,
     HighlightDirective,
-    FavoritesComponent
+    FavoritesComponent,
+    SignupComponent
   ],
   imports: [
     BrowserModule,

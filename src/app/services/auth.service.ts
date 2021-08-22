@@ -82,7 +82,11 @@ export class AuthService {
      localStorage.removeItem(this.tokenKey);
    }
 
-   signUp() {
+   signUp(user) {
+
+    return this.http.post<AuthResponse>(baseURL+'users/signup', 
+    {'firstname':user.firstname,'lastname':user.lastname,
+    'username': user.username, 'password': user.password,'admin':user.admin})
 
    }
 
